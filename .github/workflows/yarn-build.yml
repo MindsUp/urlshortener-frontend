@@ -20,14 +20,40 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
-      - run: yarn install
-      - run: yarn check
-      - run: yarn lint
-      - run: yarn build
-      - run: yarn test:unit run
-#    - run: yarn test # TODO there are no existing test at this moment
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          # caching node_modules
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: yarn install
+
+      - name: Check dependencies
+        run: yarn check
+
+      - name: Run linter
+        run: yarn lint
+
+      - name: Build
+        run: yarn build
+
+      - name: Unit tests
+        run: yarn test:unit run
+#      - name: E2E tests
+#        run: yarn test # TODO there are no existing test at this moment
