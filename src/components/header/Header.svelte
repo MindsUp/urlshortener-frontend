@@ -1,12 +1,3 @@
-<script>
-  import { onMount } from "svelte";
-
-  // Add this to initialize the Bootstrap tooltip
-  onMount(() => {
-    window.$('[data-bs-toggle="tooltip"]').tooltip();
-  });
-</script>
-
 <header>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
     <div class="container">
