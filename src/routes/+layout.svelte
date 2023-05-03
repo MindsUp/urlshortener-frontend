@@ -1,13 +1,13 @@
 <script>
-	import Header from '../components/header/Header.svelte';
+  import Header from "../components/header/Header.svelte";
 </script>
 
 <div class="app">
-	<Header />
+  <Header />
 
-	<main>
-		<slot />
-	</main>
+  <main>
+    <slot />
+  </main>
 
-	<footer />
+  <footer></footer>
 </div>

@@ -1,9 +1,9 @@
 <header>
-	<img src="/logo.png" alt="Logo" />
-	<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="/about-us">About Us</a></li>
-		</ul>
-	</nav>
+  <img src="/logo.png" alt="Logo" />
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about-us">About Us</a></li>
+    </ul>
+  </nav>
 </header>
