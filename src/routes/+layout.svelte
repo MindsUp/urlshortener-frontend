@@ -1,9 +1,8 @@
 <script>
-  import Header from '../components/header/Header.svelte';
+  import Header from "../components/header/Header.svelte";
 </script>
 
 <div class="app">
-
   <Header />
 
   <main>
@@ -12,8 +11,5 @@
     </div>
   </main>
 
-  <footer>
-  </footer>
-
+  <footer></footer>
 </div>
-
