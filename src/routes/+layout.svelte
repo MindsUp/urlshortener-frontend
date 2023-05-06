@@ -6,8 +6,10 @@
   <Header />
 
   <main>
-    <div class="container">
-      <slot />
+    <div class="container-fluid">
+      <div class="row py-5">
+        <slot />
+      </div>
     </div>
   </main>
 
