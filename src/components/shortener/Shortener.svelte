@@ -19,13 +19,13 @@
     </div>
   </div>
   <div class="row">
-    <button />
+    <button></button>
   </div>
 </div>
 
 <style>
-  h1, p {
+  h1,
+  p {
     width: fit-content;
   }
-
 </style>
