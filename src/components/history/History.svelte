@@ -7,19 +7,8 @@
 
   /** @type {import('./$types').PageData} */
   export let history: URLShortener[] = [];
-  onMount(async () => {
-    /**
-     * @type {any[]}
-     */
-    const tooltipTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    );
-    console.log(tooltipTriggerList?.length);
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      // @ts-ignore
-      return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
 
+  onMount(async () => {
     loadData()
       .then((data) => {
         history = data.resource.slice(0, 10);
@@ -36,38 +25,26 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">History</h5>
-        <ul class="list-group list-group-flush">
+        <ol class="list-group list-group-flush list-group-numbered">
           {#each history as shortener}
-            <li class="list-group-item">
+            <li class="list-group-item d-flex justify-content-evenly">
               <div class="row">
                 <div class="col-10">
-                  <div class="form-group row">
-                    <label for="alias" class="col-sm-3 col-form-label">Alias:</label>
-                    <div class="col-sm">
-                      <input
-                        type="text"
-                        readonly
-                        class="form-control-plaintext"
-                        id="alias"
-                        value="{shortener.alias}"
-                      />
+                  <div class="row">
+                    <div class="col">
+                      <div class="fw-bold">{shortener.alias}</div>
                     </div>
                   </div>
-                  <div class="form-group row">
-                    <label for="url" class="col-sm-3 col-form-label">URL:</label>
-                    <div class="col-sm">
-                      <input
-                        type="text"
-                        readonly
-                        class="form-control-plaintext"
-                        id="url"
-                        value="{shortener.url}"
-                      />
+                  <div class="row">
+                    <div class="col">
+                      <span
+                        ><a href="{shortener.url}" target="_blank"
+                          >{shortener.url.substring(0, 32)}...</a
+                        ></span
+                      >
                     </div>
                   </div>
-                  <span data-bs-toggle="tooltip" data-bs-title="Another tooltip"
-                    >Created at: <Time relative timestamp="{shortener.createdAt}" /></span
-                  >
+                  <span>Created at: <Time relative timestamp="{shortener.createdAt}" /></span>
                 </div>
                 <div class="col-2 text-center">
                   <button type="button" class="btn btn-outline-danger"><Trash /></button>
@@ -75,7 +52,7 @@
               </div>
             </li>
           {/each}
-        </ul>
+        </ol>
       </div>
     </div>
   </div>
