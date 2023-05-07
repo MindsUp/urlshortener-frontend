@@ -1,5 +1,5 @@
 <script>
-  import History from "../History/History.svelte";
+  import History from "../history/History.svelte";
   import Shortener from "../shortener/Shortener.svelte";
 </script>
 
