@@ -1,14 +1,49 @@
-<div class="container-fluid">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk of the card's
-        content.
-      </p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+<script lang="ts">
+  import { Trash } from "svelte-bootstrap-icons";
+</script>
+
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">History</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-10">
+                <div class="form-group row">
+                  <label for="alias" class="col-sm-3 col-form-label">Alias:</label>
+                  <div class="col-sm">
+                    <input
+                      type="text"
+                      readonly
+                      class="form-control-plaintext"
+                      id="alias"
+                      value="/xyz"
+                    />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="url" class="col-sm-3 col-form-label">URL:</label>
+                  <div class="col-sm">
+                    <input
+                      type="text"
+                      readonly
+                      class="form-control-plaintext"
+                      id="url"
+                      value="www.google.com"
+                    />
+                  </div>
+                </div>
+                <span>Created at: 2021-05-25 15:40</span>
+              </div>
+              <div class="col-2 text-center">
+                <button type="button" class="btn btn-outline-danger"><Trash /></button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
