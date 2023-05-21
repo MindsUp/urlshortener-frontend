@@ -1,5 +1,5 @@
 import type { URLShortener } from "./shortener";
 
 export interface URLShorteners {
-    resource: URLShortener[];
+  resource: URLShortener[];
 }
