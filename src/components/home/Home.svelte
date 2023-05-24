@@ -4,10 +4,10 @@
 </script>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-7">
     <Shortener />
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <History />
   </div>
 </div>
