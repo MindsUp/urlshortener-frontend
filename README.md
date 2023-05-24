@@ -1,28 +1,38 @@
-# create-svelte
+# Url shortener
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Frontend repo for the url shortener project
 
-## Creating a project
+## Local setup
 
-If you're seeing this, you've probably already done this step. Congrats!
+This project will use node as a build tool, consider using [`nvm`](https://github.com/nvm-sh/nvm#installing-and-updating) for setting up your node version to 18
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+```shell
+nvm i 18
 ```
 
-## Developing
+This project will use `yarn` for dependencies management.
+To download them run the command below:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+```shell
+yarn install
+```
 
-```bash
-npm run dev
+After that you can already start the app locally with:
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```shell
+yarn dev
+```
+
+## Code style
+
+This project contains a `.prettierrc` file to ensure formmating, but also contains an `.editorconfig` to help with your IDE setup.
+
+Consider installing a plugin for your IDE (if available) for Prettier and Editorconfig, so they will automatically comply with the defined rules.
+
+The build pipeline will evaluate if the files are correctly formmated, you can always run the command below if you want all of your files to be automatically updated to the formatting rules:
+
+```shell
+yarn format
 ```
 
 ## Building
@@ -30,9 +40,9 @@ npm run dev -- --open
 To create a production version of your app:
 
 ```bash
-npm run build
+yarn build
 ```
 
-You can preview the production build with `npm run preview`.
+You can preview the production build with `yarn preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

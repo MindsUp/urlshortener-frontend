@@ -6,7 +6,7 @@
   <Header />
 
   <main>
-    <div class="container">
+    <div class="container-fluid py-3">
       <slot />
     </div>
   </main>

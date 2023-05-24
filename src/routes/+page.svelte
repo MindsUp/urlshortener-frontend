@@ -1,5 +1,5 @@
 <script>
-  import Shortener from "../components/shortener/Shortener.svelte";
+  import Home from "../components/home/Home.svelte";
 </script>
 
-<Shortener />
+<Home />
