@@ -3,13 +3,11 @@
   import Shortener from "../shortener/Shortener.svelte";
 </script>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-8">
-      <Shortener />
-    </div>
-    <div class="col-md-4">
-      <History />
-    </div>
+<div class="row">
+  <div class="col-md-8">
+    <Shortener />
+  </div>
+  <div class="col-md-4">
+    <History />
   </div>
 </div>
