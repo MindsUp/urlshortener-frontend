@@ -1,17 +1,7 @@
 <script lang="ts">
+  import { submitShortener } from "$lib/shortener/shortener-api-client";
   import { onMount } from "svelte";
-  import { urlShortener } from "../../lib/shortener/shortener-api-client";
-
-  /** @type {import('./$types').Actions} */
-  export const actions = {
-    default: async ({ request }) => {
-      const data = await request.formData();
-      const url = data.get("url");
-      const alias = data.get("alias");
-
-      return urlShortener(url, alias);
-    }
-  };
+  import { enhance } from "$app/forms";
 
   onMount(async () => {
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -33,17 +23,27 @@
       );
     });
   });
+
+  async function submitShort(event: Event) {
+    console.log(event.target);
+
+    const formEl = event.target as HTMLFormElement;
+    const data = new FormData(formEl);
+
+    // you can see everything about the form
+    console.log(data);
+  }
 </script>
 
 <div class="d-grid mb-3 col-5 mx-auto justify-content-center">
   <h1>Shortener</h1>
 </div>
-<form method="POST" class="needs-validation" novalidate>
+<form method="POST" action="?/submitShortener1" class="needs-validation" novalidate use:enhance>
   <div class="row mb-3">
     <label for="url" class="col-2 col-form-label">Url</label>
     <div class="col-8">
       <div class="input-group has-validation">
-        <input id="url" class="form-control" type="url" required />
+        <input id="url" name="url" class="form-control" type="text" required />
         <div class="invalid-feedback">Please provide an url</div>
       </div>
     </div>
@@ -52,7 +52,7 @@
     <label for="alias" class="col-2 col-form-label">Alias</label>
     <div class="col-8">
       <div class="input-group has-validation">
-        <input id="alias" class="form-control" type="text" required />
+        <input id="alias" name="alias" class="form-control" type="text" required />
         <div class="invalid-feedback">Please provide an alias</div>
       </div>
     </div>
