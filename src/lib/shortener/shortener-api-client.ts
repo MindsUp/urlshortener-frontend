@@ -3,5 +3,5 @@ export function loadData() {
 }
 
 export function submitShortener(url: string, alias: string) {
-  return { success: true, url: url, alias: alias, createdAt: new Date().toISOString() };
+  return { url: url, alias: alias, createdAt: new Date().toISOString() };
 }

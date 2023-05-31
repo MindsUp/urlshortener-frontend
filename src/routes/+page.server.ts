@@ -9,6 +9,6 @@ export const actions = {
 
     console.log(url + "  - action - " + alias);
 
-    return submitShortener(url, alias);
+    return { ...submitShortener(url, alias), success: true };
   }
 }
