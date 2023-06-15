@@ -7,7 +7,7 @@
 
   afterUpdate(async () => {
     if (form?.success) {
-      alert(form.createdAt);
+      console.log(form.createdAt);
     }
   });
 </script>
