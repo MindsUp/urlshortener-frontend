@@ -9,9 +9,11 @@
   };
 
   const submitData = () => {
-    console.log(shortener);
-    const response = submitShortener(shortener.url, shortener.alias);
-    console.log(response);
+    submitShortener(shortener.url, shortener.alias + "B")
+            .then((response:any) => response.json())
+            .then((response: any) => {
+              console.log("On Shortener.svelte: "+JSON.stringify(response));
+            });
   };
 
   onMount(async () => {

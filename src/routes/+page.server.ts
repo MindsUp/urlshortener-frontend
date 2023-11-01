@@ -5,9 +5,9 @@ export const actions = {
   submitShortener1: async ({request}) => {
     const data = await request.formData();
     const url = String(data.get("url"));
-    const alias = String(data.get("alias"));
+    const alias = String(data.get("alias")) + "N";
 
-    console.log(url + "  - action - " + alias);
+    console.log("On index.server.ts: "+url + "  - action - " + alias);
 
     return { ...submitShortener(url, alias), success: true };
   }

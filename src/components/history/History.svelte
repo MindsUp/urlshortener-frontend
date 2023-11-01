@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Trash } from "svelte-bootstrap-icons";
   import { onMount } from "svelte";
-  import { loadData } from "../../lib/shortener/shortener-api-client";
+  import { loadData } from "$lib/shortener/shortener-api-client";
   import type { URLShortener } from "../../$types/shortener";
   import Time from "svelte-time";
 
@@ -10,8 +10,9 @@
 
   onMount(async () => {
     loadData()
-      .then((data) => {
-        history = data.resource.slice(0, 5);
+      .then((response:any) => response.json())
+      .then((body:any) => {
+        history = body.resource;
       })
       .catch((error) => {
         console.log(error);

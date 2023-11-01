@@ -1,9 +1,20 @@
 export function loadData() {
-  return fetch("data/history.json").then((response) => response.json());
+  return fetch("http://localhost:8080/v1/shortened-url");
 }
 
-export function submitShortener(url: string, alias: string) {
-  const response = { url: url, alias: alias, createdAt: new Date().toISOString() };
-  console.log("server: " + response);
-  return response;
+export async function submitShortener(url: string, alias: string) {
+    const body = {
+        url: url,
+        alias: alias
+    }
+    const response = await fetch("http://localhost:8080/v1/shortened-url",
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+    console.log("On shortener-api-client.ts")
+    return response;
 }
