@@ -48,7 +48,7 @@
                   <span><a href="{shortener.url}" target="_blank">{shortener.url}</a></span>
                 </div>
                 <div class="align-self-end">
-                  <span>Created at: <Time timestamp="{shortener.createdAt}" format="YYYY-MM-DDTHH:MM:SS:ssss" /></span>
+                  <span>Created at: <Time relative timestamp="{shortener.createdAt}" /></span>
                 </div>
               </div>
               <button type="button" class="btn btn-outline-danger" on:click="{deleteData(shortener.alias)}"><Trash /></button>
