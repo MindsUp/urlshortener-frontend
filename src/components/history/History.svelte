@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Trash } from "svelte-bootstrap-icons";
   import { onMount } from "svelte";
-  import { loadData } from "$lib/shortener/shortener-api-client";
+  import { loadData, deleteByAlias } from "$lib/shortener/shortener-api-client";
   import type { URLShortener } from "../../$types/shortener";
   import Time from "svelte-time";
 
@@ -9,16 +9,27 @@
   export let history: URLShortener[] = [];
 
   onMount(async () => {
-    loadData()
-      .then((response:any) => response.json())
-      .then((body:any) => {
-        history = body.resource;
-      })
-      .catch((error) => {
-        console.log(error);
-        return [];
-      });
+      loadHistory()
   });
+
+  function loadHistory(){
+      loadData()
+          .then((response:any) => response.json())
+          .then((body:any) => {
+              history = body.resource;
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+  }
+
+  function deleteData(alias: string) {
+    deleteByAlias(alias)
+        .then(() => loadHistory())
+        .catch((error) => {
+          console.log(error);
+        });
+  }
 </script>
 
 <div class="row">
@@ -37,10 +48,10 @@
                   <span><a href="{shortener.url}" target="_blank">{shortener.url}</a></span>
                 </div>
                 <div class="align-self-end">
-                  <span>Created at: <Time relative timestamp="{shortener.createdAt}" /></span>
+                  <span>Created at: <Time timestamp="{shortener.createdAt}" format="YYYY-MM-DDTHH:MM:SS:ssss" /></span>
                 </div>
               </div>
-              <button type="button" class="btn btn-outline-danger"><Trash /></button>
+              <button type="button" class="btn btn-outline-danger" on:click="{deleteData(shortener.alias)}"><Trash /></button>
             </li>
           {/each}
         </ol>
