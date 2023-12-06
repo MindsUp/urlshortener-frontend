@@ -2,6 +2,15 @@ export function loadData() {
   return fetch("http://localhost:8080/v1/shortened-url");
 }
 
+export function findByAlias(alias: string):Promise<Response> {
+  return fetch(`http://localhost:8080/v1/shortened-url/${alias}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+}
+
 export function deleteByAlias(alias: string):Promise<Response> {
   return fetch(`http://localhost:8080/v1/shortened-url/${alias}`, {
     method: 'DELETE',

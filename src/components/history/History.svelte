@@ -42,7 +42,7 @@
             <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto text-truncate">
                 <div class="align-self-start">
-                  <div class="fw-bold">{shortener.alias}</div>
+                  <div class="fw-bold"><a href="{shortener.alias}">{shortener.alias}</a></div>
                 </div>
                 <div class="align-self-center col text-truncate">
                   <span><a href="{shortener.url}" target="_blank">{shortener.url}</a></span>
