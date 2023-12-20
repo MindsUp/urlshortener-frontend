@@ -11,14 +11,22 @@
   const submitData = () => {
     submitShortener(shortener.url, shortener.alias + "B")
             .then((response:any) => response.json())
-            .then((response: any) => {
-              console.log("On Shortener.svelte: "+JSON.stringify(response));
+            .then((responseBody: any) => {
+              if (responseBody.error) {
+                alert(responseBody.message)
+              } else {
+                console.log("On Shortener.svelte: " + JSON.stringify(responseBody));
+                shortener = {
+                  url: "",
+                  alias: ""
+                };
+              }
             });
   };
 
   onMount(async () => {
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll(".needs-validation");
+    const forms = document.querySelectorAll(".needs-validations");
 
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms).forEach(function (form) {
@@ -41,7 +49,7 @@
 <div class="d-grid mb-3 col-5 mx-auto justify-content-center">
   <h1>Shortener</h1>
 </div>
-<form method="POST" action="?/submitShortener1" class="needs-validation" novalidate use:enhance>
+<form class="needs-validation" novalidate>
   <div class="row mb-3">
     <label for="url" class="col-2 col-form-label">Url</label>
     <div class="col-8">
@@ -67,10 +75,8 @@
           name="alias"
           class="form-control"
           type="text"
-          required
           bind:value="{shortener.alias}"
         />
-        <div class="invalid-feedback">Please provide an alias</div>
       </div>
     </div>
   </div>
